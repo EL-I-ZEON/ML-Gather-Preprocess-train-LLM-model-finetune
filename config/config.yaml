@@ -1,0 +1,48 @@
+# General Settings
+project_name: "Disinformation Censorship"
+
+# Paths
+data:
+  raw_data_path: "data/raw/raw_dataset.csv"
+  processed_data_path: "data/processed/"
+  train_data_path: "data/processed/train_data.csv"
+  val_data_path: "data/processed/val_data.csv"
+  test_data_path: "data/processed/test_data.csv"
+  fine_tune_data_path: "data/processed/fine_tune_data.csv"
+
+models:
+  model_save_path: "models/"
+  trained_model_path: "models/trained_model/"
+  fine_tuned_model_path: "models/fine_tuned_model/"
+  model_name: "bert-base-uncased"  # Model architecture to use (can be changed to another model)
+
+# Training Parameters
+training:
+  num_train_epochs: 3
+  batch_size:
+    train: 8
+    eval: 8
+  learning_rate: 5e-5
+  warmup_steps: 500
+  weight_decay: 0.01
+
+# Evaluation Settings
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1"]
+  evaluation_strategy: "epoch"
+  logging_steps: 10
+
+# Fine-Tuning Parameters
+fine_tuning:
+  num_train_epochs: 3
+  batch_size:
+    train: 8
+    eval: 8
+  learning_rate: 2e-5
+  warmup_steps: 300
+  weight_decay: 0.01
+  fine_tune_dataset_size: 5000  # Specify the number of fine-tune examples to use
+
+# Miscellaneous
+random_seed: 42  # Seed for reproducibility
+device: "cuda"  # Use "cuda" for GPU or "cpu" for CPU
